@@ -65,3 +65,15 @@ window.addEventListener('scroll', () => {
   const opacity = Math.min(scroll / maxScroll, 0.6); // vai até 0.6
   hero.style.background = `linear-gradient(rgba(0,0,0,${opacity}), rgba(0,0,0,0))`;
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const whatsappBtn = document.getElementById('whatsappBtn');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) { // aparece após rolar 200px
+            whatsappBtn.classList.add('show');
+        } else {
+            whatsappBtn.classList.remove('show');
+        }
+    });
+});

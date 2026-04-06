@@ -137,6 +137,50 @@ h2 {
   color: #facc15;
 }
 
+#whatsappBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+
+    /* começa invisível e deslocado */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#whatsappBtn img {
+    width: 35px;
+    height: 35px;
+    pointer-events: none; /* evita conflito com hover */
+}
+
+#whatsappBtn.show {
+    opacity: 1;
+    transform: translateY(0);
+    animation: pulse 1.5s infinite ease-in-out; /* animação de pulso */
+}
+
+#whatsappBtn:hover {
+    transform: translateY(0) scale(1.1);
+    animation: none; /* pausa o pulso no hover */
+}
+
+/* animação pulse */
+@keyframes pulse {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(0) scale(1.15); }
+}
+
 /* ===================== */
 /* HERO */
 /* ===================== */
@@ -418,31 +462,6 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-.whatsapp-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #25D366;
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    transition: transform 0.3s;
-    cursor: pointer;
-}
-
-.whatsapp-btn img {
-    width: 35px;
-    height: 35px;
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.1);
-}
 
 /* ===================== */
 /* RESPONSIVO */
