@@ -432,6 +432,7 @@ footer {
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     transition: transform 0.3s;
+    cursor: pointer;
 }
 
 .whatsapp-btn img {
@@ -442,6 +443,7 @@ footer {
 .whatsapp-btn:hover {
     transform: scale(1.1);
 }
+
 /* ===================== */
 /* RESPONSIVO */
 @media (max-width: 768px) {
