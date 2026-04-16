@@ -1,51 +1,54 @@
 // HEADER SCROLL
 const header = document.querySelector(".header");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
+if (header) {
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 50);
+  });
+}
 
+// MENU MOBILE
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 
-menuBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("active");
-});
-
-document.querySelectorAll("#mobileMenu a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("active");
   });
-});
+
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+    });
+  });
+}
 
 // ANIMAÇÃO AO SCROLL
 const reveals = document.querySelectorAll(".reveal");
 
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add("active");
-    }
+if (reveals.length > 0) {
+  window.addEventListener("scroll", () => {
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        el.classList.add("active");
+      }
+    });
   });
-});
+}
 
+// CONTADORES
 const counters = document.querySelectorAll(".counter");
 
 counters.forEach(counter => {
   const update = () => {
     const target = +counter.getAttribute("data-target");
     const current = +counter.innerText;
-
-    const increment = target / 200; // 🔥 mais devagar (antes era /100)
+    const increment = target / 200;
 
     if (current < target) {
       counter.innerText = Math.ceil(current + increment);
-      setTimeout(update, 30); // 🔥 mais suave
+      setTimeout(update, 30);
     } else {
       counter.innerText = target;
     }
@@ -54,26 +57,24 @@ counters.forEach(counter => {
   update();
 });
 
-// =====================
 // HERO GRADIENT SCROLL
-// =====================
 const hero = document.querySelector('.hero');
 
-window.addEventListener('scroll', () => {
-  const scroll = window.scrollY;
-  const maxScroll = 300; // controla até onde escurece
-  const opacity = Math.min(scroll / maxScroll, 0.6); // vai até 0.6
-  hero.style.background = `linear-gradient(rgba(0,0,0,${opacity}), rgba(0,0,0,0))`;
-});
+if (hero) {
+  window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    const maxScroll = 300;
+    const opacity = Math.min(scroll / maxScroll, 0.6);
 
-document.addEventListener('DOMContentLoaded', () => {
-    const whatsappBtn = document.getElementById('whatsappBtn');
+    hero.style.background = `linear-gradient(rgba(0,0,0,${opacity}), rgba(0,0,0,0))`;
+  });
+}
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) { // aparece após rolar 200px
-            whatsappBtn.classList.add('show');
-        } else {
-            whatsappBtn.classList.remove('show');
-        }
-    });
-});
+// WHATSAPP BUTTON
+const whatsappBtn = document.getElementById('whatsappBtn');
+
+if (whatsappBtn) {
+  window.addEventListener('scroll', () => {
+    whatsappBtn.classList.toggle('show', window.scrollY > 200);
+  });
+}
